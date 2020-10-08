@@ -17,13 +17,28 @@ var detectNetwork = function(cardNumber) {
   //input: cardnumber - string
   //output: Returns "Diners Club" or "American Express"
 
-  if (cardNumber.length === 14) {
-    return 'The Diner\'s Club';
+  //Edgecases are lengths
+
+  //if string[1] === 8 || 9
+  //if string[1] ===
+
+
+  if (cardNumber.length === 14 && cardNumber[0] === '3' && cardNumber[1] === '8' || cardNumber[0] === '3' && cardNumber[1] === '9') {
+    return 'Diner\'s Club';
   }
 
-  if (cardNumber.length === 15) {
-    return 'The American Express';
+  if (cardNumber.length === 15 && cardNumber[0] === '3' && cardNumber[1] === '4' || cardNumber[0] === '3' && cardNumber[1] === '7') {
+    return 'American Express';
   }
+
+  if (cardNumber[0] === '4' && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19)) {
+    return 'Visa';
+  }
+
+  if (cardNumber[0] === '5' && cardNumber[1] === '1' || cardNumber[0] === '5' && cardNumber[1] === '2' || cardNumber[0] === '5' && cardNumber[1] === '3' || cardNumber[0] === '5' && cardNumber[1] === '4' || cardNumber[0] === '5' && cardNumber[1] === '5' && cardNumber.length === 16) {
+    return 'MasterCard';
+  }
+
 };
 
 
