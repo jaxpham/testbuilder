@@ -148,13 +148,43 @@ describe('Discover', function() {
     detectNetwork('6011123412341234123').should.equal('Discover');
   });
 
+  it('has a prefix of 65 and a length of 16', function() {
+    detectNetwork('6511123412341234').should.equal('Discover');
+  });
+
+  it('has a prefix of 65 and a length of 19', function() {
+    detectNetwork('6511123412341234123').should.equal('Discover');
+  });
+
+  for (var prefix = 644; prefix <= 649; prefix++) {
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork('6441123412341237').should.equal('Discover');
+      } ); it('has a prefix of ' + prefix + ' and a length of 19', function() {
+        detectNetwork('6441123412341234123').should.equal('Discover');
+      });
+    })(prefix);
+  }
+
 });
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
   var should = chai.should();
 
-  it('has a prefix of 6011 and a length of 16', function() {
-    detectNetwork('6011123412341234').should.equal('Discover');
-  });
+  for (var length = 12; length <= 19; length++) {
+    (function(length) {
+      it('has a length of ' + length + ' and a prefix of 5018', function() {
+        detectNetwork('5018123412341234').should.equal('Maestro');
+      }); it('has a length of ' + length + ' and a prefix of 5020', function() {
+        detectNetwork('50201234123412341').should.equal('Maestro');
+      }); it('has a length of ' + length + ' and a prefix of 5038', function() {
+        detectNetwork('50381234123412341').should.equal('Maestro');
+      }); it('has a length of ' + length + ' and a prefix of 6304', function() {
+        detectNetwork('63041234123412341').should.equal('Maestro');
+      });
+    })(length);
+  }
+
+
 });
