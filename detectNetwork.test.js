@@ -49,7 +49,7 @@ describe('Diner\'s Club', function() {
   });
 
   it('has a prefix of 39 and a length of 14', function() {
-    if (detectNetwork('3934567890123') !== 'Diner\'s Club') {
+    if (detectNetwork('39123456789012') !== 'Diner\'s Club') {
       throw new Error('Test failed');
     }
 
@@ -67,11 +67,11 @@ describe('American Express', function() {
   };
 
   it('has a prefix of 34 and a length of 15', function() {
-    assert(detectNetwork('343456789012345') === 'American Express');
+    assert(detectNetwork('341234567890123') === 'American Express');
   });
 
   it('has a prefix of 37 and a length of 15', function() {
-    assert(detectNetwork('373456789012345') === 'American Express');
+    assert(detectNetwork('371234567890123') === 'American Express');
   });
 });
 
